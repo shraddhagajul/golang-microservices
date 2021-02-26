@@ -12,7 +12,7 @@ import (
 
 //go doesnt have assert as it returns as soon as an assert fails. We want to test all conditions at once
 func TestGetUserNoUserFound(t *testing.T){
-	user, err :=GetUser(0)
+	user, err := UserDao.GetUser(0)
 	//a and b are both same
 	//a
 	assert.Nil(t,user,"we were not expecting a user with id 0") 
@@ -36,7 +36,7 @@ func TestGetUserNoUserFound(t *testing.T){
 }
 
 func TestGetUserNotError(t *testing.T){
-	user,err := GetUser(123)
+	user,err := UserDao.GetUser(123)
 	assert.Nil(t,err,"we were not ecpecting an error for user id 123")
 	assert.NotNil(t,user,"we were ecxpecting user data for user id 123")
 	assert.EqualValues(t,123,user.Id)
